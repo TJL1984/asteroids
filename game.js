@@ -45,6 +45,18 @@
           // console.log('rotate(' + ship.angle + 'deg)')
           // ship.htmlElem.style.transitionduration = ('.1s');
         }
+        else if (event.keyCode === 39) {
+          ship.angle +=5;
+          ship.htmlElem.style.transform = 'rotate(' + ship.angle + 'deg)';
+        }
+        else if (event.keyCode === 38) {
+          ship.angle +=5;
+          ship.htmlElem.style.transform = 'rotate(' + ship.angle + 'deg)';
+        }
+
+        console.log(getShipMovement(ship.velocity, ship.angle));
+        ship.htmlElem.style.position = '' + getShipMovement(ship.velocity, ship.angle) + '';
+
 
         // Implement me!
 
