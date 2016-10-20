@@ -2,15 +2,16 @@
     'use strict';
 
     var shipElem = document.getElementById('ship');
+    // var rotate = ;
 
     // Create your "ship" object and any other variables you might need...
 
     var ship = {
       htmlElem: shipElem,
       velocity: 0,
-      angle: 0,
+      angle: 9,
     };
-
+    console.log(ship.angle);
     console.log(ship);
 
     var allAsteroids = [];
@@ -37,8 +38,12 @@
     function handleKeys(event) {
         console.log(event.keyCode);
         if (event.keyCode === 37) {
-          console.log('space');
-          ship.htmlElem.style.backgroundColor = '#005500';
+          // console.log('good job!');
+          ship.angle -= 5;
+          // console.log(ship.angle);
+          ship.htmlElem.style.transform = 'rotate(' + ship.angle + 'deg)';
+          // console.log('rotate(' + ship.angle + 'deg)')
+          // ship.htmlElem.style.transitionduration = ('.1s');
         }
 
         // Implement me!
