@@ -5,6 +5,13 @@
 
     // Create your "ship" object and any other variables you might need...
 
+    var ship = {
+      htmlElem: shipElem,
+      velocity: 0,
+      angle: 0,
+    };
+
+    console.log(ship);
 
     var allAsteroids = [];
     shipElem.addEventListener('asteroidDetected', function (event) {
@@ -29,6 +36,10 @@
      */
     function handleKeys(event) {
         console.log(event.keyCode);
+        if (event.keyCode === 37) {
+          console.log('space');
+          ship.htmlElem.style.backgroundColor = '#005500';
+        }
 
         // Implement me!
 
@@ -48,7 +59,7 @@
         // NOTE: you will need to change these arguments to match your ship object!
         // What does this function return? What will be in the `move` variable?
         // Read the documentation!
-        var move = getShipMovement(shipsCurrentVelocity, shipsCurrentAngle);
+        // var move = getShipMovement(shipsCurrentVelocity, shipsCurrentAngle);
 
 
         // Move the ship here!
