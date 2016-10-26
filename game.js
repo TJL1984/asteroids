@@ -2,22 +2,31 @@
     'use strict';
 
     var shipElem = document.getElementById('ship');
-    // var rotate = ;
-
-    // Create your "ship" object and any other variables you might need...
 
     var ship = {
       htmlElem: shipElem,
       velocity: 0,
-      angle: 9,
+      angle: 0,
     };
-    console.log(ship.angle);
+
+
     console.log(ship);
 
+    ship.htmlElem.style.top = '500px';
+    ship.htmlElem.style.left = '30px';
+
+
+
+
     var allAsteroids = [];
+
     shipElem.addEventListener('asteroidDetected', function (event) {
         // You can detect when a new asteroid appears with this event.
         // The new asteroid's HTML element will be in:  event.detail
+        allAsteroids.push(event.detail);
+        console.log(ship.htmlElem.getBoundingClientRect());
+        console.log(event.detail.getBoundingClientRect());
+
 
         // What might you need/want to do in here?
 
@@ -38,24 +47,29 @@
     function handleKeys(event) {
         console.log(event.keyCode);
         if (event.keyCode === 37) {
-          // console.log('good job!');
-          ship.angle -= 5;
+          console.log('left');
+          ship.angle -= 10;
           // console.log(ship.angle);
-          ship.htmlElem.style.transform = 'rotate(' + ship.angle + 'deg)';
-          // console.log('rotate(' + ship.angle + 'deg)')
-          // ship.htmlElem.style.transitionduration = ('.1s');
-        }
-        else if (event.keyCode === 39) {
-          ship.angle +=5;
           ship.htmlElem.style.transform = 'rotate(' + ship.angle + 'deg)';
         }
         else if (event.keyCode === 38) {
-          ship.angle +=5;
+          console.log('up'); //NEED UP KEY
+          ship.velocity += 1;
+
+
+
+        }
+        else if (event.keyCode === 39) {
+          console.log('right')
+          ship.angle += 10;
+          // console.log(ship.angle);
           ship.htmlElem.style.transform = 'rotate(' + ship.angle + 'deg)';
         }
+        else if (event.keyCode === 40) {
+          console.log('down') //NEED DOWN KEY
+          ship.velocity -= 1;
+        }
 
-        console.log(getShipMovement(ship.velocity, ship.angle));
-        ship.htmlElem.style.position = '' + getShipMovement(ship.velocity, ship.angle) + '';
 
 
         // Implement me!
@@ -76,7 +90,17 @@
         // NOTE: you will need to change these arguments to match your ship object!
         // What does this function return? What will be in the `move` variable?
         // Read the documentation!
-        // var move = getShipMovement(shipsCurrentVelocity, shipsCurrentAngle);
+         var move = getShipMovement(ship.velocity, ship.angle);
+         var top = parseInt(ship.htmlElem.style.top);
+         top -= move.top;
+         ship.htmlElem.style.top = top + 'px';
+
+         var left = parseInt(ship.htmlElem.style.left);
+        left += move.left;
+        ship.htmlElem.style.left = left + 'px';
+
+
+
 
 
         // Move the ship here!
@@ -99,8 +123,21 @@
      * that you can use to detect whether one box is on top of another.
      *
      * @return void
-     */
+     */           //ITS SHOWING THE ASTEROID # AS THEY COME IN SCREEN
     function checkForCollisions() {
+
+       var shipCoordinates = getShipMovement.event.detail();{
+         console.log(shipCoordinates);
+       }
+
+
+
+
+      //if (allAsteriods.getBoundingClientRect() === ship.htmlElem.getBoundingClientRect()){
+      //  console.log(hit);
+      // }
+
+
 
         // Implement me!
 
