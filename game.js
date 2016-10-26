@@ -126,9 +126,9 @@
      */           //ITS SHOWING THE ASTEROID # AS THEY COME IN SCREEN
     function checkForCollisions() {
 
-       var shipCoordinates = getShipMovement.event.detail();{
-         console.log(shipCoordinates);
-       }
+    //    var shipCoordinates = getShipMovement.event.detail();{
+    //      console.log(shipCoordinates);
+    //    }
 
 
 
