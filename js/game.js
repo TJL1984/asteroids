@@ -51,13 +51,13 @@
           ship.velocity += 1;
         }
         else if (event.keyCode === 39) {
-          console.log('right')
+          console.log('right');
           ship.angle += 10;
           // console.log(ship.angle);
           ship.htmlElem.style.transform = 'rotate(' + ship.angle + 'deg)';
         }
         else if (event.keyCode === 40) {
-          console.log('down')
+          console.log('down');
           ship.velocity -= 1;
         }
 
@@ -128,7 +128,7 @@
       // }
 
       allAsteroids.forEach(function position(each) {
-          var asteroidposition = each.getBoundingClientRect()
+          var asteroidposition = each.getBoundingClientRect();
           if (shipCoordinates.top < asteroidposition.bottom && // Matt suggested I work on the top & bottom of the ship, then the top & bottom of the asteroid.
               shipCoordinates.bottom > asteroidposition.top &&
               shipCoordinates.left < asteroidposition.right &&
@@ -196,6 +196,6 @@
             top: (velocity * Math.cos(angle * Math.PI / 180))
         };
     }
-console.log()
+console.log();
 
 })();
