@@ -123,24 +123,20 @@
     var shipCoordinates = ship.htmlElem.getBoundingClientRect();
     // console.log(shipCoordinates);
 
-    allAsteroids.forEach(function position(each) {
-        var asteroidposition = each.getBoundingClientRect()
-        if (shipCoordinates.top < asteroidposition.bottom &&
-            shipCoordinates.bottom > asteroidposition.top &&
-            shipCoordinates.left < asteroidposition.right &&
-            shipCoordinates.right > asteroidposition.left) {
-                crash(each);
-                ship.velocity = 0;
-            }
-    });
-
-
-
-
       //if (allAsteroids.getBoundingClientRect() === ship.htmlElem.getBoundingClientRect()){
       //  console.log(hit);
       // }
 
+      allAsteroids.forEach(function position(each) {
+          var asteroidposition = each.getBoundingClientRect()
+          if (shipCoordinates.top < asteroidposition.bottom && // Matt suggested I work on the top & bottom of the ship, then the top & bottom of the asteroid.
+              shipCoordinates.bottom > asteroidposition.top &&
+              shipCoordinates.left < asteroidposition.right &&
+              shipCoordinates.right > asteroidposition.left) {
+                  crash(each);
+                  ship.velocity = 0;
+              }
+      });
 
         // Implement me!
 
