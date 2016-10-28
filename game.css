@@ -51,7 +51,7 @@ aside.hit::after {
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;
     border-bottom: 50px solid white;
-    box-shadow: 0 13px 6px -7px #ffbb66;
+    box-shadow: 0 13px 6px -7px #42d9f4;
     z-index: 1;
 }
 #ship.crash {

@@ -9,14 +9,8 @@
       angle: 0,
     };
 
-
-    console.log(ship);
-
     ship.htmlElem.style.top = '500px';
     ship.htmlElem.style.left = '30px';
-
-
-
 
     var allAsteroids = [];
 
@@ -53,11 +47,8 @@
           ship.htmlElem.style.transform = 'rotate(' + ship.angle + 'deg)';
         }
         else if (event.keyCode === 38) {
-          console.log('up'); //NEED UP KEY
+          console.log('up');
           ship.velocity += 1;
-
-
-
         }
         else if (event.keyCode === 39) {
           console.log('right')
@@ -66,7 +57,7 @@
           ship.htmlElem.style.transform = 'rotate(' + ship.angle + 'deg)';
         }
         else if (event.keyCode === 40) {
-          console.log('down') //NEED DOWN KEY
+          console.log('down')
           ship.velocity -= 1;
         }
 
@@ -101,8 +92,6 @@
 
 
 
-
-
         // Move the ship here!
 
 
@@ -125,18 +114,32 @@
      * @return void
      */           //ITS SHOWING THE ASTEROID # AS THEY COME IN SCREEN
     function checkForCollisions() {
+        // console.log(someElement.getBoundingClientRect());
 
     //    var shipCoordinates = getShipMovement.event.detail();{
     //      console.log(shipCoordinates);
     //    }
 
+    var shipCoordinates = ship.htmlElem.getBoundingClientRect();
+    // console.log(shipCoordinates);
+
+    allAsteroids.forEach(function position(each) {
+        var asteroidposition = each.getBoundingClientRect()
+        if (shipCoordinates.top < asteroidposition.bottom &&
+            shipCoordinates.bottom > asteroidposition.top){
+                crash(each);
+                ship.velocity = 0;
+            }
+
+
+    });
 
 
 
-      //if (allAsteriods.getBoundingClientRect() === ship.htmlElem.getBoundingClientRect()){
+
+      //if (allAsteroids.getBoundingClientRect() === ship.htmlElem.getBoundingClientRect()){
       //  console.log(hit);
       // }
-
 
 
         // Implement me!
@@ -197,5 +200,6 @@
             top: (velocity * Math.cos(angle * Math.PI / 180))
         };
     }
+console.log()
 
 })();
