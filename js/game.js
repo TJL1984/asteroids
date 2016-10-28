@@ -126,12 +126,12 @@
     allAsteroids.forEach(function position(each) {
         var asteroidposition = each.getBoundingClientRect()
         if (shipCoordinates.top < asteroidposition.bottom &&
-            shipCoordinates.bottom > asteroidposition.top){
+            shipCoordinates.bottom > asteroidposition.top &&
+            shipCoordinates.left < asteroidposition.right &&
+            shipCoordinates.right > asteroidposition.left) {
                 crash(each);
                 ship.velocity = 0;
             }
-
-
     });
 
 
